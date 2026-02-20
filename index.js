@@ -28,10 +28,21 @@ app.get("/webhook", (req, res) => {
 });
 
 // ===== RECIBIR MENSAJES =====
-app.post("/webhook", (req, res) => {
-  console.log("POST /webhook recibido:", JSON.stringify(req.body));
-  res.sendStatus(200);
-});
+app.post("/webhook", async (req, res) => {
+  try {
+    const message =
+      req.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
+
+    if (!message) {
+      return res.sendStatus(200);
+    }
+
+    const from = message.from;
+    const text = message.text?.body;
+
+    if (!text) {
+      return res.sendStatus(200);
+    }
 
     // ===== LLAMADA A OPENAI =====
     const aiResponse = await fetch("https://api.openai.com/v1/chat/completions", {
