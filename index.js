@@ -88,7 +88,7 @@ app.post("/webhook", async (req, res) => {
     return res.sendStatus(200);
 
   } catch (error) {
-    console.error("Error:", error);
+    console.error("Error enviando respuesta a WhatsApp o OpenAI:", error);
     return res.sendStatus(500);
   }
 });
