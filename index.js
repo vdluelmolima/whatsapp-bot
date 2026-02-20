@@ -8,7 +8,7 @@ app.get("/", (req, res) => {
 app.use(express.json());
 
 // ===== VARIABLES =====
-const VERIFY_TOKEN = miToken123;
+const VERIFY_TOKEN = "miToken123";
 const WHATSAPP_TOKEN = process.env.WHATSAPP_TOKEN;
 const PHONE_NUMBER_ID = process.env.PHONE_NUMBER_ID;
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
