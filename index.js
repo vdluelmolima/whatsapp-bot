@@ -2,6 +2,9 @@ import express from "express";
 import fetch from "node-fetch";
 
 const app = express();
+app.get("/", (req, res) => {
+  res.send("Servidor funcionando");
+});
 app.use(express.json());
 
 // ===== VARIABLES =====
